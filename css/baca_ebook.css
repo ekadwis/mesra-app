@@ -182,7 +182,7 @@ body {
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .ebook-stats {
@@ -501,8 +501,17 @@ footer {
   }
 
   .btn-read {
-    grid-column: 2;
-    grid-row: 2;
+    width: 100%;
+    padding: 0.95rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #5aada0 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 10px; /* tambahin ini */
   }
 
   .ebook-content-area {
@@ -545,6 +554,7 @@ footer {
   .ebook-info {
     grid-column: 1;
     padding: 1rem;
+    margin-top: 200px;
   }
 
   .btn-read {
