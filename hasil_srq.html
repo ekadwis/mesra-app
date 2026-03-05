@@ -35,17 +35,11 @@
      </div><!-- Score Section -->
      <div class="score-section">
       <div class="score-label">
-       Total Skor SRQ
+        Gejala
       </div>
-      <h3 class="score-number" id="scoreNumber">26</h3>
-      <div class="score-max" id="scoreMax"></div>
-      <div class="progress-wrapper">
-       <div class="progress-label"><span class="progress-label-text">Tingkat Gejala</span> <span class="progress-percentage" id="scorePercentage">90%</span>
-       </div>
-       <div class="progress">
-        <div class="progress-bar-custom" id="progressBar" style="width: 90%;"></div>
-       </div>
-      </div>
+      <h6 class="score-number" id="gejalaText">-</h6>
+      <div class="score-max" id="tanggalSubmit"></div>
+    </div>
      </div><!-- Status Badge -->
      <div class="status-wrapper">
       <div class="status-badge warning" id="statusBadge">
@@ -74,87 +68,63 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbyS6y63OBsRpR81JhII3N_GxkkTIpgCcs_sCDHXjnx5onzwNOSyIKNbYFooXnLGkCHB/exec";
   
-    function calculatePercentage(score, max = 29) {
-      return Math.round((score / max) * 100);
-    }
-  
-    function getStatusInfo(score) {
-      score = Number(score);
-  
-      if (score <= 5) {
-        return {
-          class: 'normal',
-          label: 'Baik',
-          interpretation:
-            'Hasil skrining menunjukkan kondisi kesehatan mental Anda dalam kategori baik. Tetap jaga pola hidup sehat dan kelola stres dengan baik.'
-        };
-      } else if (score <= 9) {
-        return {
-          class: 'warning',
-          label: 'Perlu Perhatian',
-          interpretation:
-            'Terdapat beberapa gejala yang perlu diperhatikan. Disarankan untuk menjaga keseimbangan aktivitas, istirahat, dan dukungan sosial.'
-        };
-      } else {
-        return {
-          class: 'warning',
-          label: 'Perlu Evaluasi Lanjutan',
-          interpretation:
-            'Ditemukan cukup banyak gejala yang memerlukan evaluasi lebih lanjut oleh tenaga kesehatan untuk memastikan kondisi secara menyeluruh.'
-        };
-      }
-    }
-  
     function loadData() {
-      const params = new URLSearchParams(window.location.search);
-      const id_pasien = params.get("id_pasien");
-  
-      if (!id_pasien) {
-        alert("ID Pasien tidak ditemukan");
-        return;
-      }
-  
-      fetch(API_URL, {
-        method: "POST",
-        body: new URLSearchParams({
-          action: "get-detail-srq",
-          id_pasien: id_pasien
-        })
-      })
-      .then(res => res.json())
-      .then(data => {
-  
-        if (!data.success) {
-          alert(data.message);
-          return;
-        }
-  
-        const nama = data.nama_pasien;
-        const skor = Number(data.skor);
-  
-        const statusInfo = getStatusInfo(skor);
-        const percentage = calculatePercentage(skor);
-  
-        // Isi data ke halaman
-        document.getElementById("patientName").textContent = nama;
-        document.querySelector(".patient-info p").textContent = "ID Pasien: " + data.id_pasien;
-  
-        document.getElementById("scoreNumber").textContent = skor;
-        document.getElementById("scoreMax").textContent = "dari 29 poin";
-        document.getElementById("scorePercentage").textContent = percentage + "%";
-        document.getElementById("progressBar").style.width = percentage + "%";
-  
-        const statusBadge = document.getElementById("statusBadge");
-        statusBadge.className = `status-badge ${statusInfo.class}`;
-        document.getElementById("statusLabel").textContent = statusInfo.label;
-  
-        document.getElementById("interpretationText").textContent = statusInfo.interpretation;
-  
-      })
-      .catch(err => {
-        alert("Gagal terhubung ke server");
-      });
+  const params = new URLSearchParams(window.location.search);
+  const id_pasien = params.get("id_pasien");
+
+  if (!id_pasien) {
+    alert("ID Pasien tidak ditemukan");
+    return;
+  }
+
+  fetch(API_URL, {
+    method: "POST",
+    body: new URLSearchParams({
+      action: "get-detail-srq",
+      id_pasien: id_pasien
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    if (!data.success) {
+      alert(data.message);
+      return;
     }
+
+    // Isi data dari backend
+    document.getElementById("patientName").textContent = data.nama_pasien;
+    document.querySelector(".patient-info p").textContent =
+      "ID Pasien: " + data.id_pasien;
+
+    document.getElementById("gejalaText").textContent = data.gejala;
+    document.getElementById("tanggalSubmit").textContent =
+      "Tanggal Submit: " + data.tanggal_submit;
+
+    // Badge berdasarkan gejala
+    const statusBadge = document.getElementById("statusBadge");
+    const statusLabel = document.getElementById("statusLabel");
+
+    statusLabel.textContent = data.gejala;
+
+    if (data.gejala === "Normal") {
+      statusBadge.className = "status-badge normal";
+    } else if (data.gejala.includes("Cemas") || data.gejala.includes("Depresi")) {
+      statusBadge.className = "status-badge warning";
+    } else {
+      statusBadge.className = "status-badge danger";
+    }
+
+    // Interpretasi dari backend
+    document.getElementById("interpretationText").textContent =
+      data.intrepretasi_hasil;
+
+  })
+  .catch(err => {
+    alert("Gagal terhubung ke server");
+    console.error(err);
+  });
+}
   
     function handleBack() {
       window.location.href = "hasil_srq_test.html";

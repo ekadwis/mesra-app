@@ -284,7 +284,7 @@
               </div>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar-label">
-                  <span>Nilai</span> <span id="postTestPercentText">0%</span>
+                  <span>Progress</span> <span id="postTestPercentText">0%</span>
                 </div>
                 <div class="progress-bar">
                   <div
@@ -432,15 +432,14 @@
                 selesai dilakukan.
               </p>
 
-              <!-- Dummy Link Google Drive -->
               <a
-                href="https://drive.google.com/file/d/1DummyLinkExample/view"
-                target="_blank"
-                id="labBtn"
-                class="progress-action"
-              >
-                Download Hasil Lab →
-              </a>
+              href="#"
+              target="_blank"
+              id="labBtn"
+              class="progress-action"
+            >
+              Download Hasil Lab →
+            </a>
             </div>
             <!-- Sertifikat Card -->
             <div class="progress-card">
@@ -526,40 +525,49 @@
         const srq = data.srq || 0;
         const hasil = data.hasil_pemeriksaan || 0;
         const lab = data.hasil_lab || 0;
-
+        const linkFile = data.link_file || '';
+      
         // ===== UPDATE PERCENT =====
         document.getElementById('ebookPercentText').textContent = ebook + '%';
         document.getElementById('ebookProgressBar').style.width = ebook + '%';
-
-        document.getElementById('postTestPercentText').textContent =
-          postTest + '%';
-        document.getElementById('postTestProgressBar').style.width =
-          postTest + '%';
-
+      
+        document.getElementById('postTestPercentText').textContent = postTest + '%';
+        document.getElementById('postTestProgressBar').style.width = postTest + '%';
+      
         document.getElementById('srqPercentText').textContent = srq + '%';
         document.getElementById('srqProgressBar').style.width = srq + '%';
-
+      
         document.getElementById('hasilPercentText').textContent = hasil + '%';
         document.getElementById('hasilProgressBar').style.width = hasil + '%';
-
+      
         document.getElementById('labPercentText').textContent = lab + '%';
         document.getElementById('labProgressBar').style.width = lab + '%';
-        setStatus('labStatus', lab);
-
-        // ===== STATUS SELESAI / MENUNGGU =====
+      
+        // ===== STATUS =====
         setStatus('ebookStatus', ebook);
         setStatus('postTestStatus', postTest);
         setStatus('srqStatus', srq);
         setStatus('hasilStatus', hasil);
-
+        setStatus('labStatus', lab);
+      
+        // ===== DOWNLOAD HASIL LAB =====
+        const labBtn = document.getElementById("labBtn");
+      
+        if (lab === 100 && linkFile) {
+          labBtn.href = linkFile;
+          labBtn.style.pointerEvents = "auto";
+          labBtn.style.opacity = "1";
+        } else {
+          labBtn.href = "#";
+          labBtn.style.pointerEvents = "none";
+          labBtn.style.opacity = "0.5";
+        }
+      
         // ===== STEP UNLOCK SYSTEM =====
-        unlockButton('ebookBtn', true); // ebook selalu bisa
+        unlockButton('ebookBtn', true);
         unlockButton('postTestBtn', ebook === 100);
         unlockButton('srqBtn', ebook === 100 && postTest === 100);
-        unlockButton(
-          'hasilBtn',
-          ebook === 100 && postTest === 100 && srq === 100
-        );
+        unlockButton('hasilBtn', ebook === 100 && postTest === 100 && srq === 100);
       }
 
       function setStatus(elementId, value) {

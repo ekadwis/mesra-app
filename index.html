@@ -3,278 +3,171 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistem Pemeriksaan Kesehatan Pranikah</title>
+  <title>MESRA - Menuju Pernikahan Sehat dan Sejahtera</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <script src="/_sdk/element_sdk.js"></script>
-  <link rel="stylesheet" href="css/index.css">
+ <link rel="stylesheet" href="css/index.css">
   <style>body { box-sizing: border-box; }</style>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body>
-  <div class="decorative-shape shape-1"></div>
-  <div class="decorative-shape shape-2"></div>
-  <div class="decorative-shape shape-3"></div>
-  <div class="main-wrapper"><!-- Hero Section -->
+  <div class="main-wrapper"><!-- Header / Navbar -->
+   <nav class="navbar-custom">
+    <div class="container">
+     <a href="#" class="navbar-brand-custom">
+      <div class="navbar-brand-icon">
+        <img src="img/logo.png" alt="">
+      </div><span id="appName">MESRA</span> </a>
+    </div>
+   </nav><!-- Hero Section -->
    <section class="hero-section">
     <div class="container">
-     <!-- <svg class="hero-icon" viewbox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" fill="url(#heroGrad)" fill-opacity="0.2" /> <path d="M40 20C40 20 28 28 28 38C28 44.627 33.373 50 40 50C46.627 50 52 44.627 52 38C52 28 40 20 40 20Z" fill="#4A9D8E" /> <path d="M40 50V60M40 60L35 55M40 60L45 55" stroke="#4A9D8E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="40" cy="35" r="4" fill="white" /> <path d="M25 42C22 38 22 33 25 28" stroke="#7B8CDE" stroke-width="2" stroke-linecap="round" /> <path d="M55 42C58 38 58 33 55 28" stroke="#7B8CDE" stroke-width="2" stroke-linecap="round" /> <defs>
-       <lineargradient id="heroGrad" x1="2" y1="2" x2="78" y2="78" gradientunits="userSpaceOnUse">
-        <stop stop-color="#4A9D8E" />
-        <stop offset="1" stop-color="#7B8CDE" />
-       </lineargradient>
-      </defs>
-     </svg> -->
-     <img src="img/logo.png" class="hero-icon" alt="">
-     <h1 class="hero-title" id="mainTitle">Sistem Pemeriksaan Kesehatan Pranikah</h1>
-     <p class="hero-subtitle" id="subtitle">Layanan pemeriksaan kesehatan komprehensif untuk mempersiapkan pernikahan yang sehat dan bahagia bersama keluarga tercinta</p>
-    </div>
-   </section><!-- Login Cards Section -->
-   <section class="py-4">
-    <div class="container">
-     <div class="row g-4 justify-content-center"><!-- Patient Card -->
-      <div class="col-12 col-md-6 col-lg-5">
-       <div class="login-card card-patient">
-        <div class="card-icon pasien-icon">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="64"
-                 height="64"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.8"
-                 stroke-linecap="round"
-                 stroke-linejoin="round">
-          
-              <!-- Diamond -->
-              <polygon points="12 2 15 6 12 10 9 6 12 2"></polygon>
-          
-              <!-- Ring -->
-              <circle cx="12" cy="16" r="5"></circle>
-          
-              <!-- Heart -->
-              <path d="M12 13s-2-2-3-3a2 2 0 0 1 3-3 2 2 0 0 1 3 3c-1 1-3 3-3 3z"></path>
-          
-              <!-- Sparkles -->
-              <line x1="4" y1="4" x2="6" y2="4"></line>
-              <line x1="5" y1="3" x2="5" y2="5"></line>
-          
-              <line x1="18" y1="4" x2="20" y2="4"></line>
-              <line x1="19" y1="3" x2="19" y2="5"></line>
-          
-            </svg>
-          </div>
-        <h3 class="card-title" id="patientCardTitle">💍 Login sebagai Pasien</h3>
-        <p class="card-description">Akses layanan pemeriksaan kesehatan pranikah, lihat hasil pemeriksaan, dan konsultasi dengan tenaga medis profesional</p><a href="login_pasien.html" class="btn btn-login btn-patient" onclick="handleLogin('patient')"> Masuk </a>
-       </div>
-      </div><!-- Midwife Card -->
-      <div class="col-12 col-md-6 col-lg-5">
-       <div class="login-card card-midwife">
-        <div class="card-icon bidan-icon">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="64"
-                 height="64"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.8"
-                 stroke-linecap="round"
-                 stroke-linejoin="round">
-          
-              <!-- Head -->
-              <circle cx="12" cy="6" r="3"></circle>
-          
-              <!-- Body -->
-              <path d="M6 20c0-4 3-6 6-6s6 2 6 6"></path>
-          
-              <!-- Medical Cross -->
-              <rect x="9" y="10" width="6" height="6"></rect>
-              <line x1="12" y1="11" x2="12" y2="15"></line>
-              <line x1="10" y1="13" x2="14" y2="13"></line>
-          
-              <!-- Stethoscope -->
-              <path d="M4 10v2a4 4 0 0 0 8 0v-2"></path>
-              <circle cx="18" cy="16" r="1.5"></circle>
-          
-            </svg>
-          </div>
-        <h3 class="card-title" id="midwifeCardTitle">👩‍⚕️ Login sebagai Bidan</h3>
-        <p class="card-description">Kelola data pasien, input hasil pemeriksaan, dan pantau riwayat kesehatan calon pengantin dengan mudah</p><a href="login_bidan.html" class="btn btn-login btn-midwife" onclick="handleLogin('midwife')"> Masuk </a>
-       </div>
+     <div class="row align-items-center g-4">
+      <div class="col-lg-6 hero-content">
+       <h1 class="hero-title" id="heroTitle">MESRA - Pemeriksaan Kesehatan Pranikah</h1>
+       <p class="hero-tagline" id="heroTagline">Persiapkan pernikahan dengan pemeriksaan kesehatan menyeluruh dan terpercaya untuk masa depan bahagia</p>
+      </div>
+      <div class="col-lg-6 hero-svg-container">
+       <img src="img/hero.png" alt="">
       </div>
      </div>
     </div>
-   </section><!-- Features Section -->
-   <section class="features-section">
+   </section><!-- Login Section -->
+   <section class="content-section">
     <div class="container">
-     <div class="row g-3">
-      <div class="col-6 col-md-3">
-       <div class="feature-item">
-        <div class="feature-icon">
-         <svg viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L4 10V22L16 28L28 22V10L16 4Z" fill="#CFE8E5" stroke="#4A9D8E" stroke-width="2" /> <path d="M10 16L14 20L22 12" stroke="#4A9D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
-        </div>
-        <h5 class="feature-title">Aman &amp; Terpercaya</h5>
-        <p class="feature-desc">Data terlindungi dengan enkripsi</p>
+     <h2 class="section-title">Pilih Tipe Akun</h2>
+     <div class="login-cards"><!-- Patient Login Card -->
+      <div class="login-card patient">
+       <div class="login-card-svg">
+        <img src="img/pasien_logo.png" alt="">
        </div>
+       <h3>Login Pasien</h3>
+       <p>Akses riwayat pemeriksaan, hasil tes, dan rekomendasi kesehatan Anda secara personal</p><button class="btn-login" onclick="handleLogin('pasien')"><i class="bi bi-box-arrow-right me-2"></i>Masuk sebagai Pasien</button>
+      </div><!-- Midwife Login Card -->
+      <div class="login-card midwife">
+       <div class="login-card-svg">
+        <img src="img/doctor_logo.png" alt="">
+       </div>
+       <h3>Login Bidan</h3>
+       <p>Kelola data pemeriksaan pasien, input hasil tes, dan buat laporan kesehatan</p><button class="btn-login" onclick="handleLogin('bidan')"><i class="bi bi-box-arrow-right me-2"></i>Masuk sebagai Bidan</button>
       </div>
-      <div class="col-6 col-md-3">
-       <div class="feature-item">
-        <div class="feature-icon">
-         <svg viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="24" height="20" rx="3" fill="#E6E6FA" stroke="#7B8CDE" stroke-width="2" /> <path d="M4 12H28" stroke="#7B8CDE" stroke-width="2" /> <circle cx="9" cy="18" r="2" fill="#7B8CDE" /> <circle cx="16" cy="18" r="2" fill="#7B8CDE" /> <circle cx="23" cy="18" r="2" fill="#7B8CDE" />
-         </svg>
-        </div>
-        <h5 class="feature-title">Mudah Dijadwalkan</h5>
-        <p class="feature-desc">Booking online kapan saja</p>
+     </div>
+    </div>
+   </section><!-- Supported By Section -->
+   <section class="content-section supported-by-section">
+    <div class="container">
+     <h2 class="section-title">Didukung Oleh</h2>
+     <div class="supported-by-grid"><!-- Supporter 1 -->
+      <div class="supporter-card">
+       <div class="supporter-logo-container">
+        <img src="img/kemenkes.jpeg" alt="">
        </div>
-      </div>
-      <div class="col-6 col-md-3">
-       <div class="feature-item">
-        <div class="feature-icon">
-         <svg viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="12" fill="#D6E6F2" stroke="#5A8BB0" stroke-width="2" /> <path d="M16 8V16L22 20" stroke="#5A8BB0" stroke-width="2" stroke-linecap="round" />
-         </svg>
-        </div>
-        <h5 class="feature-title">Hasil Cepat</h5>
-        <p class="feature-desc">Akses hasil dalam 24 jam</p>
+       <h4>Kementerian Kesehatan</h4>
+<p>Dukungan resmi dari Kementerian Kesehatan Republik Indonesia untuk memastikan layanan pemeriksaan pranikah yang aman, terpercaya, dan berkualitas.</p>
+      </div><!-- Supporter 2 -->
+      <div class="supporter-card">
+       <div class="supporter-logo-container">
+        <img src="img/puskesmas.jpeg" alt="">
        </div>
-      </div>
-      <div class="col-6 col-md-3">
-       <div class="feature-item">
-        <div class="feature-icon">
-         <svg viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4C16 4 6 10 6 18C6 23.523 10.477 28 16 28C21.523 28 26 23.523 26 18C26 10 16 4 16 4Z" fill="#FDF6EC" stroke="#C9A85C" stroke-width="2" /> <path d="M16 12V18M16 22V22.01" stroke="#C9A85C" stroke-width="2" stroke-linecap="round" />
-         </svg>
-        </div>
-        <h5 class="feature-title">Konsultasi Lengkap</h5>
-        <p class="feature-desc">Bimbingan tenaga ahli</p>
-       </div>
+       <h4>Puskesmas Kecamatan Kalideres</h4>
+<p>Pelayanan kesehatan pranikah dilaksanakan melalui Puskesmas Kecamatan Kalideres sebagai fasilitas kesehatan tingkat pertama.</p>
       </div>
      </div>
     </div>
    </section><!-- Footer -->
-   <footer>
+   <footer class="footer-custom mt-auto">
     <div class="container">
-     <p class="footer-text" id="footerText">© 2024 Sistem Pemeriksaan Kesehatan Pranikah. Hak Cipta Dilindungi.</p>
-     <div class="footer-links"><a href="#" onclick="event.preventDefault()">Tentang Kami</a> <a href="#" onclick="event.preventDefault()">Kontak</a> <a href="#" onclick="event.preventDefault()">Kebijakan Privasi</a>
+     <div class="footer-content">
+      <div class="footer-brand"><i class="bi bi-heart-pulse"></i> <span id="footerAppName">Layanan Pemeriksaan Kesehatan</span>
+      </div>
+      <p class="footer-text" id="footerText">Arisah.Karin.Tassya</p>
+      <div class="footer-copyright" style="margin-top: -20px;">
+       <p>© 2026 Layanan Pemeriksaan Kesehatan.</p>
+      </div>
      </div>
     </div>
    </footer>
-  </div><!-- Toast Notification -->
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
-   <div id="loginToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background: linear-gradient(135deg, #4A9D8E 0%, #7B8CDE 100%);">
+  </div><!-- Notification Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+   <div id="notificationToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
      <div class="toast-body" id="toastMessage">
-      Mengarahkan ke halaman login...
+      Notifikasi
      </div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-        const defaultConfig = {
-            main_title: 'Sistem Pemeriksaan Kesehatan Pranikah',
-            subtitle: 'Layanan pemeriksaan kesehatan komprehensif untuk mempersiapkan pernikahan yang sehat dan bahagia bersama keluarga tercinta',
-            patient_card_title: 'Login sebagai Pasien',
-            midwife_card_title: 'Login sebagai Bidan',
-            footer_text: '© 2024 Sistem Pemeriksaan Kesehatan Pranikah. Hak Cipta Dilindungi.',
-            primary_color: '#4A9D8E',
-            secondary_color: '#7B8CDE',
-            background_color: '#FDF6EC',
-            text_color: '#2D3748',
-            accent_color: '#CFE8E5'
-        };
-        
-        function handleLogin(type) {
-            const toast = document.getElementById('loginToast');
-            const toastMessage = document.getElementById('toastMessage');
-            
-            if (type === 'patient') {
-                toastMessage.textContent = 'Mengarahkan ke halaman login Pasien...';
-            } else {
-                toastMessage.textContent = 'Mengarahkan ke halaman login Bidan...';
-            }
-            
-            const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
-            bsToast.show();
-        }
-        
-        async function onConfigChange(config) {
-            const mainTitle = document.getElementById('mainTitle');
-            const subtitle = document.getElementById('subtitle');
-            const patientCardTitle = document.getElementById('patientCardTitle');
-            const midwifeCardTitle = document.getElementById('midwifeCardTitle');
-            const footerText = document.getElementById('footerText');
-            
-            if (mainTitle) mainTitle.textContent = config.main_title || defaultConfig.main_title;
-            if (subtitle) subtitle.textContent = config.subtitle || defaultConfig.subtitle;
-            if (patientCardTitle) patientCardTitle.textContent = config.patient_card_title || defaultConfig.patient_card_title;
-            if (midwifeCardTitle) midwifeCardTitle.textContent = config.midwife_card_title || defaultConfig.midwife_card_title;
-            if (footerText) footerText.textContent = config.footer_text || defaultConfig.footer_text;
-        }
-        
-        function mapToCapabilities(config) {
-            return {
-                recolorables: [
-                    {
-                        get: () => config.background_color || defaultConfig.background_color,
-                        set: (value) => {
-                            config.background_color = value;
-                            window.elementSdk.setConfig({ background_color: value });
-                        }
-                    },
-                    {
-                        get: () => config.accent_color || defaultConfig.accent_color,
-                        set: (value) => {
-                            config.accent_color = value;
-                            window.elementSdk.setConfig({ accent_color: value });
-                        }
-                    },
-                    {
-                        get: () => config.text_color || defaultConfig.text_color,
-                        set: (value) => {
-                            config.text_color = value;
-                            window.elementSdk.setConfig({ text_color: value });
-                        }
-                    },
-                    {
-                        get: () => config.primary_color || defaultConfig.primary_color,
-                        set: (value) => {
-                            config.primary_color = value;
-                            window.elementSdk.setConfig({ primary_color: value });
-                        }
-                    },
-                    {
-                        get: () => config.secondary_color || defaultConfig.secondary_color,
-                        set: (value) => {
-                            config.secondary_color = value;
-                            window.elementSdk.setConfig({ secondary_color: value });
-                        }
-                    }
-                ],
-                borderables: [],
-                fontEditable: undefined,
-                fontSizeable: undefined
-            };
-        }
-        
-        function mapToEditPanelValues(config) {
-            return new Map([
-                ['main_title', config.main_title || defaultConfig.main_title],
-                ['subtitle', config.subtitle || defaultConfig.subtitle],
-                ['patient_card_title', config.patient_card_title || defaultConfig.patient_card_title],
-                ['midwife_card_title', config.midwife_card_title || defaultConfig.midwife_card_title],
-                ['footer_text', config.footer_text || defaultConfig.footer_text]
-            ]);
-        }
-        
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange,
-                mapToCapabilities,
-                mapToEditPanelValues
-            });
-        }
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cfcadd8a2340fad',t:'MTc3MTQwODg0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    // Default configuration
+    const defaultConfig = {
+      app_name: 'Layanan Pemeriksaan Kesehatan',
+      app_tagline: 'Pemeriksaan kesehatan yang terpercaya untuk masa depan bahagia',
+      hero_title: 'Layanan Pemeriksaan Kesehatan Pranikah',
+      footer_text: 'Layanan pemeriksaan kesehatan terpercaya dan profesional'
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          document.getElementById('appName').textContent = config.app_name || defaultConfig.app_name;
+          document.getElementById('heroTitle').textContent = config.hero_title || defaultConfig.hero_title;
+          document.getElementById('heroTagline').textContent = config.app_tagline || defaultConfig.app_tagline;
+          document.getElementById('footerAppName').textContent = config.app_name || defaultConfig.app_name;
+          document.getElementById('footerText').textContent = config.footer_text || defaultConfig.footer_text;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['app_name', config.app_name || defaultConfig.app_name],
+          ['app_tagline', config.app_tagline || defaultConfig.app_tagline],
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['footer_text', config.footer_text || defaultConfig.footer_text]
+        ])
+      });
+    }
+
+    // Show notification toast
+    function showNotification(message, type = 'success') {
+      const toast = document.getElementById('notificationToast');
+      const toastMessage = document.getElementById('toastMessage');
+      
+      toastMessage.textContent = message;
+
+      if (type === 'success') {
+        toast.style.background = '#CFE8E5';
+        toast.style.color = '#2D3748';
+      } else if (type === 'info') {
+        toast.style.background = '#D6E6F2';
+        toast.style.color = '#2D3748';
+      } else {
+        toast.style.background = '#FFEBEE';
+        toast.style.color = '#C62828';
+      }
+
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+    }
+
+    // Login handlers
+    function handleLogin(userType) {
+      if (userType === 'pasien') {
+        showNotification('Mengarahkan ke halaman login pasien...', 'info');
+        window.location.href = 'login_pasien.html'
+      } else if (userType === 'bidan') {
+        showNotification('Mengarahkan ke halaman login bidan...', 'info');
+        window.location.href = 'login_bidan.html'
+      }
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d76455bf3370fad',t:'MTc3MjY4MzgyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
